@@ -16,7 +16,7 @@ const fakeCart = [
   },
   {
     pizzaId: 6,
-    name: "Vegetale",
+    name: "Vegetable",
     quantity: 1,
     unitPrice: 13,
     totalPrice: 13,
@@ -66,7 +66,7 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label htmlFor="priority">Want to give your order priority?</label>
         </div>
 
         <div>
