@@ -10,7 +10,7 @@ const fakeCart = [
   },
   {
     pizzaId: 6,
-    name: 'Vegetable',
+    name: 'Vegetale',
     quantity: 1,
     unitPrice: 13,
     totalPrice: 13,
