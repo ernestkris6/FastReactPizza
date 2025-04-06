@@ -4,8 +4,10 @@ import CartOverview from '../features/cart/CartOverview'
 import { Outlet, useNavigation } from 'react-router-dom'
 import Loader from './Loader';
 
+
 export default function AppLayout() {
 
+  //to load a spinner use useNavigation
   const navigation = useNavigation();
   const isLoading = navigation.state === 'loading';
 
@@ -15,6 +17,7 @@ export default function AppLayout() {
 
         <Header />
         <main>
+          
             <Outlet />
         </main>
 
