@@ -9,6 +9,7 @@ export default function AppLayout() {
 
   //to load a spinner use useNavigation
   const navigation = useNavigation();
+   
   const isLoading = navigation.state === 'loading';
 
   return (
@@ -17,7 +18,6 @@ export default function AppLayout() {
 
         <Header />
         <main>
-          
             <Outlet />
         </main>
 
