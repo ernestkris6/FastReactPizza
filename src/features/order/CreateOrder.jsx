@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
-import Loader from "../../ui/Loader";
+// import Loader from "../../ui/Loader";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
