@@ -1,7 +1,8 @@
 // Test ID: IIDSAT
 
 import { useLoaderData } from "react-router-dom";
-import CartItem from "../cart/CartItem";
+// import CartItem from "../cart/CartItem";
+import OrderItem from '../order/OrderItem'
 import { getOrder } from "../../services/apiRestaurant";
 import {
     calcMinutesLeft,
@@ -83,9 +84,12 @@ import {
         </div>
             
         <ul className='divide-y divide-stone-200 border-b border-t'>
-      {cart.map(item => (
+      {/* {cart.map(item => (
           <CartItem item={item} key={item.key} />
-      ))}
+      ))} */}
+          {cart.map((item)=> (
+            <OrderItem item={item} key={item.pizzaId} />
+          ))}
     </ul>
   
         <div className="space-y-2 bg-stone-200 px-6 py-5">
