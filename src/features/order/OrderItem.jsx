@@ -10,7 +10,7 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
             <span className="font-bold">{quantity}&times;</span> {name}
           </p>
           <p className="font-bold">{formatCurrency(totalPrice)}</p>
-        </div>
+        </div>  
       </li>
     );
   }
