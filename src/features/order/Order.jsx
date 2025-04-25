@@ -10,6 +10,7 @@ import {
     formatDate,
   } from "../../utils/helpers";
 import { useEffect } from "react";
+import UpdateOrder from "./UpdateOrder";
   
   // const order = {
   //   id: "ABCDEF",
@@ -54,12 +55,16 @@ import { useEffect } from "react";
 
     //fetcher can be in idle, loading or submitting state, by default fetcher is in the idle state...
 
-    useEffect(function() {
-      if(!fetcher.data || fetcher.state === 'idle') 
-        fetcher.load('/menu')
-    }, [fetcher])
+    useEffect(
+      function () {
+        if (!fetcher.data && fetcher.state === 'idle') 
+          fetcher.load('/menu');
+      },
+      [fetcher]
+    );
+  
 
-    console.log(fetcher);
+    // console.log(fetcher);
     
     // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
 
@@ -106,8 +111,12 @@ import { useEffect } from "react";
             item={item} 
             key={item.pizzaId}
             isLoadingIngredients={fetcher.state === 'loading'}
-            ingredients={fetcher?.data?.find((el)=> el.id === item.pizzaId)?.ingredients ?? []} />
+            ingredients={
+              fetcher?.data?.find((el) => el.id === item.pizzaId)?.ingredients ?? [] 
+            }
+            />
           ))}
+
     </ul>
   
         <div className="space-y-2 bg-stone-200 px-6 py-5">
@@ -115,6 +124,8 @@ import { useEffect } from "react";
           {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
           <p className="font-bold">To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
         </div>
+
+        {!priority && <UpdateOrder order={order} />}
       </div>
     );
   }
