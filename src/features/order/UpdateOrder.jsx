@@ -1,12 +1,11 @@
 import React from 'react'
-import Button from '../../ui/Button'
 import { useFetcher } from 'react-router-dom'
+import Button from '../../ui/Button'
 import { updateOrder } from '../../services/apiRestaurant'
 
 export default function UpdateOrder({order}) {
 
     const fetcher = useFetcher()
-
 
   return (
     
