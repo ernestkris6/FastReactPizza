@@ -8,7 +8,7 @@ import { getCart, getTotalCartPrice, clearCart } from "../cart/cartSlice";
 import store from '../../store';
 import { formatCurrency } from "../../utils/helpers";
 import { fetchAddress } from "../user/userSlice";
-// import Loader from "../../ui/Loader";
+
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -44,12 +44,14 @@ const isValidPhone = (str) =>
 // ];
 
 function CreateOrder() {
-  const [withPriority, setWithPriority] = useState(false);
-
+  
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  
+
   const formErrors = useActionData();
+
+  const [withPriority, setWithPriority] = useState(false);
+  
   const dispatch = useDispatch();
   // const username = useSelector(state => state.user.username);
   const {
@@ -152,7 +154,7 @@ function CreateOrder() {
           name="position" 
           value={position.latitude && position.longitude ? `${position.latitude}, ${position.longitude}` : ""} />
 
-          <Button disabled={isSubmitting || address} type='primary'>
+          <Button disabled={isSubmitting || isLoadingAddress} type='primary'>
               {isSubmitting ? "Placing order..." : `Order now for ${formatCurrency(totalPrice)}`}
           </Button>
         </div>
@@ -172,7 +174,7 @@ export async function action({request}){
       // priority: data.priority === 'on',
     }
 
-    console.log(order);
+    // console.log(order);
     
 
     const errors = {};
