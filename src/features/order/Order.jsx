@@ -9,6 +9,7 @@ import {
     formatCurrency,
     formatDate,
   } from "../../utils/helpers";
+import { useEffect } from "react";
   
   // const order = {
   //   id: "ABCDEF",
@@ -51,6 +52,15 @@ import {
 
     const fetcher = useFetcher();
 
+    //fetcher can be in idle, loading or submitting state, by default fetcher is in the idle state...
+
+    useEffect(function() {
+      if(!fetcher.data || fetcher.state === 'idle') 
+        fetcher.load('/menu')
+    }, [fetcher])
+
+    console.log(fetcher);
+    
     // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
 
     const {
@@ -89,8 +99,14 @@ import {
       {/* {cart.map(item => (
           <CartItem item={item} key={item.key} />
       ))} */}
+
+      {/*n.b: order is id while in the cart the pizzas are pizzaId*/}
           {cart.map((item)=> (
-            <OrderItem item={item} key={item.pizzaId} />
+            <OrderItem 
+            item={item} 
+            key={item.pizzaId}
+            isLoadingIngredients={fetcher.state === 'loading'}
+            ingredients={fetcher?.data?.find((el)=> el.id === item.pizzaId)?.ingredients ?? []} />
           ))}
     </ul>
   
